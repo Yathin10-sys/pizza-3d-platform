@@ -3,7 +3,7 @@ const { MongoClient } = require('mongodb');
 console.log("Starting MongoDB connection test...");
 
 // Direct connection (non-SRV) - bypasses DNS SRV query issue
-const uri = "MONGODB_URI=mongodb://NEW_USERNAME:NEW_PASSWORD@ac-akcefnk-shard-00-00.ssxscqo.mongodb.net:27017,ac-akcefnk-shard-00-01.ssxscqo.mongodb.net:27017,ac-akcefnk-shard-00-02.ssxscqo.mongodb.net:27017/?ssl=true&replicaSet=atlas-5mmhne-shard-0&authSource=admin&retryWrites=true&w=majority";
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 
 async function run() {
