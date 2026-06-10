@@ -1,8 +1,8 @@
+require('dotenv').config();
 const { MongoClient } = require('mongodb');
 
 console.log("Starting MongoDB connection test...");
 
-// Direct connection (non-SRV) - bypasses DNS SRV query issue
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 
