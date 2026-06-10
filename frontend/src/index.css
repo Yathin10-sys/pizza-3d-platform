@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-gradient: linear-gradient(135deg, #090d16 0%, #05070c 100%);
+    --card-bg: rgba(255, 255, 255, 0.03);
+    --card-border: rgba(255, 255, 255, 0.05);
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-heading: #e2e8f0;
+    --text-muted: #64748b;
+    --accent: #ff5722;
+    --accent-hover: #e64a19;
+    --input-bg: rgba(255, 255, 255, 0.02);
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --surface: rgba(255, 255, 255, 0.05);
+    --surface-hover: rgba(255, 255, 255, 0.08);
+    --border-subtle: rgba(255, 255, 255, 0.05);
+    --border-medium: rgba(255, 255, 255, 0.10);
+    --overlay-bg: rgba(15, 23, 42, 0.80);
+    --table-row-bg: rgba(15, 23, 42, 0.60);
+    --qty-bg: rgba(15, 23, 42, 0.60);
+  }
+
+  .light {
+    --bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --card-border: rgba(0, 0, 0, 0.06);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-heading: #1e293b;
+    --text-muted: #64748b;
+    --accent: #f24e1e;
+    --accent-hover: #d13f14;
+    --input-bg: rgba(255, 255, 255, 0.9);
+    --shadow-color: rgba(148, 163, 184, 0.15);
+    --surface: rgba(0, 0, 0, 0.03);
+    --surface-hover: rgba(0, 0, 0, 0.06);
+    --border-subtle: rgba(0, 0, 0, 0.06);
+    --border-medium: rgba(0, 0, 0, 0.10);
+    --overlay-bg: rgba(241, 245, 249, 0.90);
+    --table-row-bg: rgba(241, 245, 249, 0.60);
+    --qty-bg: rgba(241, 245, 249, 0.80);
+  }
+
+  body {
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    min-height: 100vh;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-panel-hover:hover {
+  transform: translateY(-4px);
+  background: var(--surface-hover);
+  border-color: var(--border-medium);
+  box-shadow: 0 12px 40px 0 var(--shadow-color);
+}
+
+.glass-input {
+  background: var(--input-bg);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease-in-out;
+}
+.glass-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px rgba(255, 87, 34, 0.2);
+  outline: none;
+}
+
+.glass-btn {
+  background: linear-gradient(135deg, var(--accent) 0%, #ff7043 100%);
+  color: white;
+  font-weight: 600;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px 0 rgba(255, 87, 34, 0.3);
+}
+.glass-btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+  box-shadow: 0 6px 20px 0 rgba(255, 87, 34, 0.4);
+}
+.glass-btn:active {
+  transform: translateY(1px);
+}
+
+/* Theme-aware utility classes */
+.theme-surface {
+  background: var(--surface);
+}
+.theme-border {
+  border-color: var(--border-subtle);
+}
+.theme-border-medium {
+  border-color: var(--border-medium);
+}
+.theme-text-primary {
+  color: var(--text-primary);
+}
+.theme-text-heading {
+  color: var(--text-heading);
+}
+.theme-text-secondary {
+  color: var(--text-secondary);
+}
+.theme-text-muted {
+  color: var(--text-muted);
+}
+
+/* Theme-aware selected state */
+.theme-selected {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+.theme-selected-subtle {
+  background: rgba(255, 87, 34, 0.1);
+  border-color: var(--accent);
+  color: var(--text-heading);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-medium);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Gradients text */
+.gradient-text {
+  background: linear-gradient(135deg, #ff7043 0%, #ff5722 50%, #d84315 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Wave animation */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(180deg); }
+  100% { transform: translateY(0px) rotate(360deg); }
+}
+
+.animate-float-slow {
+  animation: float 20s infinite linear;
+}
